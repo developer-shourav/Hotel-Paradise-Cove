@@ -22,10 +22,8 @@ function generateTag(arr, interval) {
 generateTag(tagLines, 3000);
 
 document.getElementById("random-room-btn").addEventListener("click", async function () {
-    console.log("hello world");
     const data = await fetch(`ROOMS.json`);
     const result = await data.json();
-    console.log(result);
     const randomIndex = Math.floor(Math.random() * 10);
     const modalBody = document.getElementById("random-room-info-modal-body");
     const { name, summary, property_type, images, review_scores } = result[randomIndex];
@@ -48,7 +46,6 @@ document.getElementById("random-room-btn").addEventListener("click", async funct
       reviews.innerHTML = "No reviews found";
     }
 
-    
     modalBody.innerHTML = `
     <div class="col">
     <div class="card h-100">
@@ -59,16 +56,17 @@ document.getElementById("random-room-btn").addEventListener("click", async funct
         <p class="card-text">${property_type}</p>
         <p class="card-text">${summary}</p>
         <div id='review-score'>
-      Review Scores :
-      ${review_scores?.scores?.review_scores_accuracy}
-    </div>
+          Review Scores :<span id ="review-item"></span>
+       </div>
       </div>
       <button class="btn btn-info btn-lg"  role="button"
                    >Show details</button>
     </div>
    </div>
     `;
-    
+   
+    document.getElementById('review-item').appendChild(reviews);
+     
   });
 
 
