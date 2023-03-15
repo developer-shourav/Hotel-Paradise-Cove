@@ -42,15 +42,12 @@ const displayRoomsData = async (rooms) => {
 
 const range = document.getElementById("review-range");
 range.addEventListener("input", () => {
-  const value = range.Value;
-
-  document.getElementById('review-count').innerText = value
-  const filteredData= allRooms.filter( r.number_of_reviews >= value)
-  displayRoomsData(allRooms) 
+  const value = range.value;
+console.log(allRooms);
+  document.getElementById('review-count').innerText = value;
+  const filteredData= allRooms.filter( r => r.number_of_reviews >= value)
+  displayRoomsData(filteredData) 
 });
-
-
-
 
 
 document.getElementById('sort-by-price-btn').addEventListener('click', () =>{
