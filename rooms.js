@@ -53,6 +53,5 @@ document.getElementById('sort-by-price-btn').addEventListener('click', () =>{
      allRooms.sort((a,b)=>{
         return parseFloat(a.price['$numberDecimal']) < parseFloat(b.price['$numberDecimal'])  ? 1: -1
     })
-    console.log(allRooms)
     displayRoomsData(allRooms)
 })
